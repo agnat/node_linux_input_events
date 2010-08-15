@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var sys = require('sys');
+
+var ev = require('./lib/input_event');
+
+var src = ev.createInputEventSource("/dev/input/by-path/platform-i8042-serio-0-event-kbd");
+src.on('input_event', function(data) {
+      sys.puts('got event: ' + sys.inspect(data));
+})
