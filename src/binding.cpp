@@ -60,9 +60,11 @@ class Source : public EventEmitter {
             if (args.Length() != 1) {
                 return ThrowException(Exception::Error(String::New("expected 1 argument")));
             }
+            /* probably removed by the optimizer because node itself never calls it
             if (! Buffer::HasInstance(args[0])) {
                 return ThrowException(Exception::Error(String::New("argument must be a buffer")));
             }
+            */
             Buffer * buffer = ObjectWrap::Unwrap<Buffer>(args[0]->ToObject());
             Source * src = ObjectWrap::Unwrap<Source>(args.This());
 
